@@ -7,28 +7,28 @@ import Reveal from './Reveal';
 
 const faqs = [
   {
-    question: 'Do you repair cooler motors?',
-    answer: 'Yes, we repair all types of cooler motors. We use quality spare parts and test the motor before returning it to ensure it works properly.'
+    question: 'Do you repair ceiling fans?',
+    answer: 'Yes, we specialize in ceiling fan repairs including motor winding, bearing replacement, and speed regulator issues. Most repairs are completed the same day.'
   },
   {
-    question: 'What are your shop hours?',
+    question: 'Do you provide home wiring services?',
+    answer: 'Absolutely! We offer complete house wiring services for new homes and rewiring for old properties. Our licensed electricians ensure all work meets safety standards.'
+  },
+  {
+    question: 'Do you sell branded electrical items?',
+    answer: 'Yes, we are authorized dealers for top brands like Havells, Polycab, Anchor, Philips, and Orient. All products come with manufacturer warranty.'
+  },
+  {
+    question: 'What are your shop timings?',
     answer: 'We are open Monday to Saturday from 10:00 AM to 9:00 PM. We are closed on Sundays. For urgent repairs, you can call us anytime.'
   },
   {
-    question: 'Do you offer home visits for electrical work?',
-    answer: 'Yes, we provide home visit services for house wiring, installations, and repairs. Call us to schedule an appointment and get a quote.'
+    question: 'Do you provide on-site service?',
+    answer: 'Yes, we provide home visit services for installations, repairs, and house wiring. Call us to schedule an appointment and get a quote.'
   },
   {
-    question: 'Are your products genuine?',
-    answer: 'Absolutely! We only sell genuine products from authorized brands like Havells, Polycab, Anchor, and Philips. All products come with manufacturer warranty.'
-  },
-  {
-    question: 'How long does fan repair take?',
-    answer: 'Most ceiling fan repairs are completed the same day. For fan winding, it typically takes 1-2 days depending on the work required.'
-  },
-  {
-    question: 'Do you provide warranty on repairs?',
-    answer: 'Yes, we provide a 30-day warranty on all repair work. If you face any issues with the repaired item, bring it back and we will fix it free of charge.'
+    question: 'Which areas do you serve?',
+    answer: 'We serve New Hyderabad, Nishatganj, Alambagh, Indira Nagar, Gomti Nagar, Aminabad, Hazratganj, and surrounding areas in Lucknow. Call us to check if we cover your area.'
   },
 ];
 
