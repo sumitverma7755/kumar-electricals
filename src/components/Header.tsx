@@ -58,6 +58,9 @@ export default function Header() {
             <Link href="#testimonials" className="text-slate-600 hover:text-slate-900 transition-colors">
               Reviews
             </Link>
+            <Link href="/feedback" className="text-slate-600 hover:text-slate-900 transition-colors">
+              Feedback
+            </Link>
             <Link href="#contact" className="text-slate-600 hover:text-slate-900 transition-colors">
               Contact
             </Link>
@@ -119,6 +122,9 @@ export default function Header() {
               </Link>
               <Link href="#testimonials" className="text-slate-700" onClick={() => setIsMenuOpen(false)}>
                 Reviews
+              </Link>
+              <Link href="/feedback" className="text-slate-700" onClick={() => setIsMenuOpen(false)}>
+                Feedback
               </Link>
               <Link href="#contact" className="text-slate-700" onClick={() => setIsMenuOpen(false)}>
                 Contact

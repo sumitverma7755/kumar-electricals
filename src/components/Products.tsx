@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import Reveal from './Reveal';
 
 const products = [
   {
@@ -38,31 +38,19 @@ export default function Products() {
   return (
     <section id="products" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
+        <Reveal className="text-center mb-14">
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
             Authorized Dealer for Top Brands
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Genuine electrical products from trusted brands, always in stock at wholesale prices
           </p>
-        </motion.div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product, index) => (
-            <motion.div
-              key={product.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-1"
-            >
+            <Reveal key={product.name} delay={index * 0.08}>
+              <div className="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-1">
               <div className="aspect-square bg-slate-100 overflow-hidden">
                 <img
                   src={product.image}
@@ -83,7 +71,8 @@ export default function Products() {
                   )}
                 </div>
               </div>
-            </motion.div>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

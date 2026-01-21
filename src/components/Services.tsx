@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Home, Fan, Zap } from 'lucide-react';
+import Reveal from './Reveal';
 
 const services = [
   {
@@ -46,31 +46,19 @@ export default function Services() {
   return (
     <section id="services" className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
+        <Reveal className="text-center mb-14">
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
             Expert Electrical Services
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Professional electrical solutions backed by 25+ years of experience
           </p>
-        </motion.div>
+        </Reveal>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-xl p-8 border border-slate-200 hover:shadow-xl transition-all transform hover:-translate-y-1"
-            >
+            <Reveal key={service.title} delay={index * 0.1}>
+              <div className="bg-white rounded-xl p-8 border border-slate-200 hover:shadow-xl transition-all transform hover:-translate-y-1">
               <div className="w-14 h-14 bg-amber-100 rounded-lg flex items-center justify-center mb-6">
                 <service.icon className="h-7 w-7 text-amber-600" />
               </div>
@@ -89,7 +77,8 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

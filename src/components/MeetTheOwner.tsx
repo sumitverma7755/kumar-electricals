@@ -1,8 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
 import Image from 'next/image';
+import Reveal from './Reveal';
 
 export default function MeetTheOwner() {
   return (
@@ -10,12 +10,7 @@ export default function MeetTheOwner() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <Reveal>
             <div className="inline-flex items-center gap-2 text-amber-600 mb-4">
               <Heart className="h-5 w-5" />
               <span className="text-sm font-semibold uppercase tracking-wider">The Heart of Our Business</span>
@@ -77,16 +72,10 @@ export default function MeetTheOwner() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </Reveal>
 
           {/* Right: Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
+          <Reveal delay={0.2} className="relative">
             <div className="aspect-[3/4] rounded-2xl overflow-hidden border-4 border-white shadow-xl">
               <Image
                 src="/Owner.JPG"
@@ -102,7 +91,7 @@ export default function MeetTheOwner() {
               <div className="text-3xl font-bold">25+</div>
               <div className="text-sm font-medium">Years</div>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

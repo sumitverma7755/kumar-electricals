@@ -1,7 +1,7 @@
 'use client';
 
 import { MapPin, Phone, Clock, Share2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import Reveal from './Reveal';
 
 export default function Contact() {
   const handleShareLocation = () => {
@@ -16,12 +16,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <Reveal>
             <h2 className="text-3xl font-semibold text-slate-900 mb-6">
               Visit Our Shop
             </h2>
@@ -67,15 +62,10 @@ export default function Contact() {
               <Share2 className="h-5 w-5" />
               <span>Share Location on WhatsApp</span>
             </button>
-          </motion.div>
+          </Reveal>
 
           {/* Map */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
+          <Reveal delay={0.2}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.2!2d80.949335!3d26.867192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDUyJzAxLjkiTiA4MMKwNTYnNTcuNiJF!5e0!3m2!1sen!2sin!4v1234567890"
               className="w-full h-[350px] rounded-xl border border-slate-200"
@@ -84,7 +74,7 @@ export default function Contact() {
               referrerPolicy="no-referrer-when-downgrade"
               title="Kumar Electricals - New Hyderabad, Nishatganj, Lucknow"
             />
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

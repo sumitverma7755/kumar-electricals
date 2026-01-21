@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import Reveal from './Reveal';
 
 const faqs = [
   {
@@ -37,59 +38,48 @@ export default function FAQ() {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-4xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
+        <Reveal className="text-center mb-14">
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-slate-600">
             Common questions about our services and products
           </p>
-        </motion.div>
+        </Reveal>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="border border-slate-200 rounded-lg overflow-hidden"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors"
-              >
-                <span className="font-semibold text-slate-900 pr-4">{faq.question}</span>
-                <ChevronDown
-                  className={`h-5 w-5 text-slate-400 flex-shrink-0 transition-transform ${
-                    openIndex === index ? 'transform rotate-180' : ''
-                  }`}
-                />
-              </button>
-              
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-5 pb-5 text-slate-600 leading-relaxed">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+            <Reveal key={index} delay={index * 0.05}>
+              <div className="border border-slate-200 rounded-lg overflow-hidden">
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors"
+                >
+                  <span className="font-semibold text-slate-900 pr-4">{faq.question}</span>
+                  <ChevronDown
+                    className={`h-5 w-5 text-slate-400 flex-shrink-0 transition-transform ${
+                      openIndex === index ? 'transform rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-5 pb-5 text-slate-600 leading-relaxed">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

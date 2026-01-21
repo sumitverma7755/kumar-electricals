@@ -1,11 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import Reveal from './Reveal';
 
 const reasons = [
   {
     title: 'Trusted Local Shop',
-    description: 'Serving New Hyderabad and nearby areas since 2014.'
+    description: 'Serving New Hyderabad and nearby areas since 2000.'
   },
   {
     title: 'Genuine Parts',
@@ -21,31 +21,20 @@ export default function WhyChooseUs() {
   return (
     <section className="py-24">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
+        <Reveal>
           <h2 className="text-3xl font-semibold text-slate-900">
             Why Choose Kumar Electricals
           </h2>
-        </motion.div>
+        </Reveal>
 
         <div className="mt-10 grid md:grid-cols-3 gap-10">
           {reasons.map((reason, index) => (
-            <motion.div
-              key={reason.title}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
+            <Reveal key={reason.title} delay={index * 0.1}>
               <h3 className="font-medium text-slate-900">{reason.title}</h3>
               <p className="mt-2 text-slate-600 leading-relaxed">
                 {reason.description}
               </p>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

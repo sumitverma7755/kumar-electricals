@@ -17,7 +17,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
             className="inline-flex items-center gap-2 text-sm text-amber-100 mb-8 bg-white/10 backdrop-blur-sm px-5 py-2.5 rounded-full border border-amber-500/30"
           >
             <MapPin className="h-4 w-4 text-amber-400" />
@@ -28,7 +28,7 @@ export default function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
             className="text-3xl lg:text-6xl font-bold text-white leading-tight mb-6"
           >
             Powering New Hyderabad{' '}
@@ -38,7 +38,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
             className="text-base lg:text-xl text-slate-300 leading-relaxed mb-4 max-w-3xl mx-auto"
           >
             Your trusted partner for genuine electrical parts and expert repairs in Nishatganj.
@@ -47,7 +47,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
             className="text-sm lg:text-lg text-amber-200 font-medium mb-10"
           >
             Over 25 years of service to our community.
@@ -57,7 +57,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a
