@@ -2,6 +2,7 @@
 
 import { Phone, Award } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 export default function Header() {
@@ -30,7 +31,15 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo with Est. Badge */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
+              <Image
+                src="/Logo.png"
+                alt="Kumar Electricals Logo"
+                width={40}
+                height={40}
+                className="h-9 w-auto md:h-10"
+                priority
+              />
               <span className="text-lg font-bold text-slate-900">Kumar Electricals</span>
               <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-200">
                 <Award className="h-3 w-3" />

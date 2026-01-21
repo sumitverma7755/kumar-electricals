@@ -1,4 +1,5 @@
 import { Phone, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -7,8 +8,17 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <div className="text-lg font-semibold text-slate-900 mb-4">
-              Kumar Electricals
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/Logo.png"
+                alt="Kumar Electricals Logo"
+                width={32}
+                height={32}
+                className="h-8 w-auto"
+              />
+              <div className="text-lg font-semibold text-slate-900">
+                Kumar Electricals
+              </div>
             </div>
             <p className="text-slate-600 leading-relaxed mb-3">
               Trusted since 2000. Serving Lucknow for over 25 years with quality electrical solutions.
