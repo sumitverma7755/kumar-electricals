@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 interface RevealProps {
   children: ReactNode;
@@ -11,11 +11,21 @@ interface RevealProps {
 
 export default function Reveal({ children, delay = 0, className = '' }: RevealProps) {
   const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const variants = {
     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
     visible: { opacity: 1, y: 0 }
   };
+
+  // Prevent hydration mismatch by not animating on server
+  if (!mounted) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div

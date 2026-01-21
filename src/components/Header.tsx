@@ -4,24 +4,23 @@ import { Phone, Award } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { getShopStatus } from '@/lib/shopStatus';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [status, setStatus] = useState({ open: false, label: 'Checking...' });
 
   useEffect(() => {
-    const checkIfOpen = () => {
-      const now = new Date();
-      const hours = now.getHours();
-      const day = now.getDay();
-      
-      // Open Mon-Sat (1-6), 10 AM - 9 PM
-      const isOpenNow = day >= 1 && day <= 6 && hours >= 10 && hours < 21;
-      setIsOpen(isOpenNow);
+    const updateStatus = () => {
+      setStatus(getShopStatus());
     };
 
-    checkIfOpen();
-    const interval = setInterval(checkIfOpen, 60000);
+    // Update immediately
+    updateStatus();
+    
+    // Update every minute
+    const interval = setInterval(updateStatus, 60000);
+    
     return () => clearInterval(interval);
   }, []);
 
@@ -33,12 +32,13 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-3">
             <div className="flex items-center gap-3">
               <Image
-                src="/Logo.png"
+                src="/Logo.png?v=2"
                 alt="Kumar Electricals Logo"
                 width={40}
                 height={40}
                 className="h-9 w-auto md:h-10"
                 priority
+                unoptimized
               />
               <span className="text-lg font-bold text-slate-900">Kumar Electricals</span>
               <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-200">
@@ -47,12 +47,12 @@ export default function Header() {
               </span>
             </div>
             <span className={`hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-              isOpen 
+              status.open 
                 ? 'bg-green-100 text-green-700' 
                 : 'bg-red-100 text-red-700'
             }`}>
-              <span className={`w-1.5 h-1.5 rounded-full ${isOpen ? 'bg-green-500' : 'bg-red-500'}`}></span>
-              {isOpen ? 'Open Now' : 'Closed'}
+              <span className={`w-1.5 h-1.5 rounded-full ${status.open ? 'bg-green-500' : 'bg-red-500'}`}></span>
+              {status.label}
             </span>
           </Link>
 
@@ -115,12 +115,12 @@ export default function Header() {
                   Est. 2000
                 </span>
                 <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-                  isOpen 
+                  status.open 
                     ? 'bg-green-100 text-green-700' 
                     : 'bg-red-100 text-red-700'
                 }`}>
-                  <span className={`w-1.5 h-1.5 rounded-full ${isOpen ? 'bg-green-500' : 'bg-red-500'}`}></span>
-                  {isOpen ? 'Open Now' : 'Closed'}
+                  <span className={`w-1.5 h-1.5 rounded-full ${status.open ? 'bg-green-500' : 'bg-red-500'}`}></span>
+                  {status.label}
                 </span>
               </div>
               <Link href="#services" className="text-slate-700" onClick={() => setIsMenuOpen(false)}>

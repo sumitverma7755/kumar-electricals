@@ -48,7 +48,7 @@ export default function Contact() {
                 <Clock className="h-5 w-5 text-slate-400 flex-shrink-0 mt-1" />
                 <div>
                   <p className="text-slate-600">
-                    Mon–Sat: 10:00 AM – 9:00 PM
+                    Open 7 Days: 10:00 AM – 9:00 PM
                   </p>
                 </div>
               </div>

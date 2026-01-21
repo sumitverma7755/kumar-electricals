@@ -10,11 +10,12 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/Logo.png"
+                src="/Logo.png?v=2"
                 alt="Kumar Electricals Logo"
                 width={32}
                 height={32}
                 className="h-8 w-auto"
+                unoptimized
               />
               <div className="text-lg font-semibold text-slate-900">
                 Kumar Electricals
@@ -49,9 +50,8 @@ export default function Footer() {
           <div>
             <h3 className="font-medium text-slate-900 mb-4">Working Hours</h3>
             <div className="text-slate-600 space-y-1.5">
-              <p>Monday – Saturday</p>
+              <p>Open 7 Days a Week</p>
               <p>10:00 AM – 9:00 PM</p>
-              <p className="text-sm text-slate-500 mt-3">Closed on Sundays</p>
             </div>
           </div>
         </div>

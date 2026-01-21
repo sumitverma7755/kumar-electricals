@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     question: 'What are your shop timings?',
-    answer: 'We are open Monday to Saturday from 10:00 AM to 9:00 PM. We are closed on Sundays. For urgent repairs, you can call us anytime.'
+    answer: 'We are open 7 days a week from 10:00 AM to 9:00 PM, including Sundays. For urgent repairs, you can call us anytime.'
   },
   {
     question: 'Do you provide on-site service?',
