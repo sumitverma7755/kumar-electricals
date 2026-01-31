@@ -42,6 +42,7 @@ export async function POST(request: Request) {
 
     // Send email notification
     if (process.env.RESEND_API_KEY && process.env.NOTIFICATION_EMAIL) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
       const stars = '⭐'.repeat(data.rating);
       
       await resend.emails.send({
