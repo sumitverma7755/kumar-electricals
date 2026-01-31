@@ -1,6 +1,7 @@
 'use client';
 
 import { Star, Quote } from 'lucide-react';
+import Link from 'next/link';
 import Reveal from './Reveal';
 
 const testimonials = [
@@ -52,7 +53,7 @@ export default function Testimonials() {
             <Reveal key={index} delay={index * 0.08}>
               <div className="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
                 <Quote className="h-8 w-8 text-amber-500 mb-4" />
-                
+
                 <div className="flex gap-1 mb-3">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
@@ -60,7 +61,7 @@ export default function Testimonials() {
                 </div>
 
                 <p className="text-slate-700 leading-relaxed mb-4">
-                  "{testimonial.text}"
+                  &ldquo;{testimonial.text}&rdquo;
                 </p>
 
                 <div className="border-t border-slate-100 pt-4">
@@ -72,6 +73,16 @@ export default function Testimonials() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.4} className="mt-16 text-center">
+          <Link
+            href="/feedback"
+            className="inline-flex items-center gap-2 bg-white text-slate-900 border border-slate-200 px-6 py-3 rounded-lg font-semibold hover:bg-slate-50 transition-all shadow-sm"
+          >
+            <Star className="h-4 w-4 text-amber-500" />
+            <span>Leave Your Review</span>
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

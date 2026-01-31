@@ -2,6 +2,8 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import BrandsMarquee from '@/components/BrandsMarquee';
 import AreasWeServe from '@/components/AreasWeServe';
+import About from '@/components/About';
+import TrustBar from '@/components/TrustBar';
 import MeetTheOwner from '@/components/MeetTheOwner';
 import Services from '@/components/Services';
 import Products from '@/components/Products';
@@ -21,6 +23,8 @@ export default function Home() {
       <Header />
       <main className="pb-20 md:pb-0">
         <Hero />
+        <About />
+        <TrustBar />
         <BrandsMarquee />
         <AreasWeServe />
         <MeetTheOwner />

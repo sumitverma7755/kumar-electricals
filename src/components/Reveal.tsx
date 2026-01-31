@@ -14,6 +14,7 @@ export default function Reveal({ children, delay = 0, className = '' }: RevealPr
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

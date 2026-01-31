@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { MessageCircle, Star, ArrowLeft, CheckCircle } from 'lucide-react';
 import Reveal from '@/components/Reveal';
+import MobileActionBar from '@/components/MobileActionBar';
 
 export default function FeedbackPage() {
   const [formData, setFormData] = useState({ name: '', message: '' });
@@ -60,7 +61,7 @@ export default function FeedbackPage() {
               We Value Your Feedback
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed">
-              Your feedback helps us improve our service and serve you better. 
+              Your feedback helps us improve our service and serve you better.
               Share your experience with Kumar Electricals.
             </p>
           </Reveal>
@@ -217,6 +218,7 @@ export default function FeedbackPage() {
           </Reveal>
         </div>
       </main>
+      <MobileActionBar />
     </div>
   );
 }

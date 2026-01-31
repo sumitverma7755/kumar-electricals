@@ -17,10 +17,10 @@ export default function Header() {
 
     // Update immediately
     updateStatus();
-    
+
     // Update every minute
     const interval = setInterval(updateStatus, 60000);
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -46,11 +46,10 @@ export default function Header() {
                 Est. 2000
               </span>
             </div>
-            <span className={`hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-              status.open 
-                ? 'bg-green-100 text-green-700' 
+            <span className={`hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${status.open
+                ? 'bg-green-100 text-green-700'
                 : 'bg-red-100 text-red-700'
-            }`}>
+              }`}>
               <span className={`w-1.5 h-1.5 rounded-full ${status.open ? 'bg-green-500' : 'bg-red-500'}`}></span>
               {status.label}
             </span>
@@ -94,7 +93,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="hidden"
+            className="md:hidden flex items-center justify-center p-2 rounded-md text-slate-900 hover:bg-slate-100 transition-colors"
             aria-label="Toggle menu"
           >
             <div className="space-y-1.5">
@@ -114,11 +113,10 @@ export default function Header() {
                   <Award className="h-3 w-3" />
                   Est. 2000
                 </span>
-                <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-                  status.open 
-                    ? 'bg-green-100 text-green-700' 
+                <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${status.open
+                    ? 'bg-green-100 text-green-700'
                     : 'bg-red-100 text-red-700'
-                }`}>
+                  }`}>
                   <span className={`w-1.5 h-1.5 rounded-full ${status.open ? 'bg-green-500' : 'bg-red-500'}`}></span>
                   {status.label}
                 </span>
