@@ -132,3 +132,15 @@
     @apply hidden!;
   }
 }
+
+/* Custom toast styles */
+.toast-custom {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Offline indicator */
+@media (display-mode: standalone) {
+  .offline-banner {
+    display: block;
+  }
+}

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import { Analytics } from "@vercel/analytics/next";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -72,6 +73,15 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
+        <Toaster 
+          position="top-center" 
+          richColors 
+          closeButton
+          toastOptions={{
+            duration: 5000,
+            className: 'toast-custom'
+          }}
+        />
         <Analytics />
       </body>
     </html>

@@ -7,16 +7,24 @@ import Reveal from './Reveal';
 
 const faqs = [
   {
-    question: 'Do you repair ceiling fans?',
+    question: 'What areas do you serve?',
+    answer: 'We serve Rajapur, Tiwaripur, Babhnauli, Kamasin, and surrounding areas in Lalganj, Raebareli. We\'re happy to travel for larger projects!'
+  },
+  {
+    question: 'Do you provide emergency electrical services?',
+    answer: 'Yes! We offer 24/7 emergency electrical services for urgent issues like power outages, electrical faults, and safety hazards. Call us anytime at +91 94157 72903.'
+  },
+  {
+    question: 'How much do your services cost?',
+    answer: 'Pricing varies based on the type and complexity of work. Basic repairs start from ₹300, while complete house wiring depends on property size. We offer free consultations and transparent quotes before starting any project.'
+  },
+  {
+    question: 'Do you repair ceiling fans and motors?',
     answer: 'Yes, we specialize in ceiling fan repairs including motor winding, bearing replacement, and speed regulator issues. Most repairs are completed the same day.'
   },
   {
-    question: 'Do you provide home wiring services?',
-    answer: 'Absolutely! We offer complete house wiring services for new homes and rewiring for old properties. Our licensed electricians ensure all work meets safety standards.'
-  },
-  {
     question: 'Do you sell branded electrical items?',
-    answer: 'Yes, we are authorized dealers for top brands like Havells, Polycab, Anchor, Philips, and Orient. All products come with manufacturer warranty.'
+    answer: 'Yes, we are authorized dealers for top brands like Havells, Polycab, Anchor, Philips, Crompton, V-Guard, Finolex, and more. All products come with manufacturer warranty.'
   },
   {
     question: 'What are your shop timings?',
@@ -27,9 +35,17 @@ const faqs = [
     answer: 'Yes, we provide home visit services for installations, repairs, and house wiring. Call us to schedule an appointment and get a quote.'
   },
   {
-    question: 'Which areas do you serve?',
-    answer: 'We serve New Hyderabad, Nishatganj, Alambagh, Indira Nagar, Gomti Nagar, Aminabad, Hazratganj, and surrounding areas in Lucknow. Call us to check if we cover your area.'
+    question: 'Are you licensed and insured?',
+    answer: 'Yes, we are fully licensed electricians with years of experience. We follow all safety standards and building codes to ensure quality work.'
   },
+  {
+    question: 'How long does electrical installation take?',
+    answer: 'Timeline depends on the project scope. Simple repairs can be done within hours, while complete home wiring may take several days. We provide realistic timelines during consultation.'
+  },
+  {
+    question: 'Do you offer warranties on your work?',
+    answer: 'Yes! We provide warranties on both our workmanship and the products we install. Warranty periods vary by service and product type.'
+  }
 ];
 
 export default function FAQ() {
