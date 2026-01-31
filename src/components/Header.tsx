@@ -80,10 +80,10 @@ export default function Header() {
             </Link>
             <a
               href="tel:+919453816645"
-              className="flex items-center gap-2 bg-amber-500 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-amber-600 hover:shadow-lg transition-all min-h-[44px]"
+              className="flex items-center justify-center gap-2 bg-amber-500 text-white px-6 h-[48px] rounded-xl font-semibold text-base hover:bg-amber-600 hover:shadow-lg transition-all"
               aria-label="Call Kumar Electricals"
             >
-              <Phone className="h-4 w-4" aria-hidden="true" />
+              <Phone className="h-5 w-5" aria-hidden="true" />
               Call Now
             </a>
           </nav>
@@ -91,10 +91,10 @@ export default function Header() {
           {/* Mobile: Phone Number Always Visible */}
           <a
             href="tel:+919453816645"
-            className="md:hidden flex items-center gap-2 bg-amber-500 text-white px-4 py-2.5 rounded-lg font-medium text-sm min-h-[44px]"
+            className="md:hidden flex items-center justify-center gap-2 bg-amber-500 text-white px-4 h-[44px] rounded-xl font-semibold text-[15px] min-w-[80px]"
             aria-label="Call Kumar Electricals"
           >
-            <Phone className="h-4 w-4" aria-hidden="true" />
+            <Phone className="h-5 w-5" aria-hidden="true" />
             Call
           </a>
 

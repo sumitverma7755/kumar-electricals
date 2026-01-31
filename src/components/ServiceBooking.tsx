@@ -4,7 +4,8 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { Calendar } from "react-day-picker"
+import { DayPicker } from "react-day-picker"
+import "react-day-picker/dist/style.css"
 import { format } from "date-fns"
 import { CalendarIcon, Clock } from "lucide-react"
 import { toast } from "sonner"
@@ -202,7 +203,7 @@ export default function ServiceBooking() {
                   </button>
                   {showCalendar && (
                     <div className="absolute z-10 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl p-4">
-                      <Calendar
+                      <DayPicker
                         mode="single"
                         selected={selectedDate}
                         onSelect={handleDateSelect}

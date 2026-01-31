@@ -31,10 +31,10 @@ export default function WhatsAppButton() {
         onMouseLeave={() => setShowTooltip(false)}
         onFocus={() => setShowTooltip(true)}
         onBlur={() => setShowTooltip(false)}
-        className="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 group min-h-[56px] min-w-[56px]"
+        className="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex items-center justify-center transition-colors group"
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle className="h-7 w-7" aria-hidden="true" />
+        <MessageCircle className="h-6 w-6" aria-hidden="true" />
         
         {showTooltip && (
           <motion.div

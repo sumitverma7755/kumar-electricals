@@ -59,18 +59,24 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
+            {/* Primary CTA - Call Now */}
             <a
               href="tel:+919453816645"
-              className="inline-flex items-center justify-center gap-2 bg-amber-500 text-white px-6 py-3.5 lg:px-8 lg:py-4 rounded-lg font-semibold hover:bg-amber-600 hover:shadow-xl transition-all transform hover:-translate-y-0.5 min-h-[44px]"
+              className="inline-flex items-center justify-center gap-2 bg-amber-500 text-white px-6 h-[44px] sm:h-[48px] sm:px-6 rounded-xl font-semibold text-[15px] sm:text-base hover:bg-amber-600 hover:shadow-xl transition-all"
+              aria-label="Call Kumar Electricals"
             >
-              <Phone className="h-5 w-5" />
-              <span className="text-sm lg:text-base">Call +91 94538 16645</span>
+              <Phone className="h-5 w-5" aria-hidden="true" />
+              <span>Call +91 94538 16645</span>
             </a>
+            {/* Secondary CTA - WhatsApp */}
             <a
               href="https://wa.me/919453816645"
-              className="inline-flex items-center justify-center gap-2 border-2 border-green-600 bg-green-500 text-white px-6 py-3.5 lg:px-8 lg:py-4 rounded-lg font-semibold hover:bg-green-600 transition-all min-h-[44px]"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-6 h-[44px] sm:h-[48px] sm:px-6 rounded-xl font-medium text-[15px] sm:text-base hover:bg-green-600 transition-all"
+              aria-label="Message on WhatsApp"
             >
-              <span className="text-sm lg:text-base">WhatsApp Us</span>
+              <span>WhatsApp Us</span>
             </a>
           </motion.div>
         </div>
