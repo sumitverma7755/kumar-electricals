@@ -5,10 +5,18 @@ import Link from 'next/link';
 import { MessageCircle, Star, ArrowLeft, CheckCircle } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import MobileActionBar from '@/components/MobileActionBar';
+import { toast } from 'sonner';
 
 export default function FeedbackPage() {
-  const [formData, setFormData] = useState({ name: '', message: '' });
+  const [formData, setFormData] = useState({ 
+    name: '', 
+    email: '',
+    phone: '',
+    rating: 5,
+    message: '' 
+  });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleWhatsAppFeedback = () => {
     const message = encodeURIComponent(
@@ -24,17 +32,38 @@ export default function FeedbackPage() {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.message.trim()) {
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit feedback');
+      }
+
       setSubmitted(true);
-      // In a real scenario, this could send to WhatsApp or email
-      const whatsappMessage = encodeURIComponent(
-        `Feedback from ${formData.name || 'Customer'}:\n\n${formData.message}`
-      );
+      toast.success('Feedback submitted successfully!');
+      
+      // Reset form after 5 seconds
       setTimeout(() => {
-        window.open(`https://wa.me/919453816645?text=${whatsappMessage}`, '_blank');
-      }, 1500);
+        setSubmitted(false);
+        setFormData({ name: '', email: '', phone: '', rating: 5, message: '' });
+      }, 5000);
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+      toast.error(error instanceof Error ? error.message : 'Failed to submit feedback. Please try WhatsApp instead.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -139,12 +168,37 @@ export default function FeedbackPage() {
 
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Rating */}
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-3">
+                      How would you rate our service? <span className="text-red-500">*</span>
+                    </label>
+                    <div className="flex gap-2 justify-center pb-4">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          type="button"
+                          onClick={() => setFormData({ ...formData, rating: star })}
+                          className="transition-transform hover:scale-110"
+                        >
+                          <Star
+                            className={`h-10 w-10 ${
+                              star <= formData.rating
+                                ? 'fill-amber-400 text-amber-400'
+                                : 'text-slate-300'
+                            }`}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
                   <div>
                     <label
                       htmlFor="name"
                       className="block text-sm font-medium text-slate-700 mb-2"
                     >
-                      Your Name <span className="text-slate-400">(optional)</span>
+                      Your Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -153,8 +207,47 @@ export default function FeedbackPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
+                      required
                       className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all"
                       placeholder="Enter your name"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-slate-700 mb-2"
+                    >
+                      Email <span className="text-slate-400">(optional)</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-slate-700 mb-2"
+                    >
+                      Phone Number <span className="text-slate-400">(optional)</span>
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all"
+                      placeholder="10-digit mobile number"
                     />
                   </div>
 
@@ -180,9 +273,10 @@ export default function FeedbackPage() {
 
                   <button
                     type="submit"
-                    className="w-full bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
+                    disabled={isSubmitting}
+                    className="w-full bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Submit Feedback
+                    {isSubmitting ? 'Submitting...' : 'Submit Feedback'}
                   </button>
                 </form>
               ) : (
@@ -191,15 +285,15 @@ export default function FeedbackPage() {
                     <CheckCircle className="h-8 w-8 text-green-600" />
                   </div>
                   <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                    Thank You!
+                    Thank You for Your Feedback!
                   </h3>
                   <p className="text-slate-600 mb-6">
-                    Your feedback has been received. We're opening WhatsApp to send it to us.
+                    We've received your feedback and will use it to improve our service.
                   </p>
                   <button
                     onClick={() => {
                       setSubmitted(false);
-                      setFormData({ name: '', message: '' });
+                      setFormData({ name: '', email: '', phone: '', rating: 5, message: '' });
                     }}
                     className="text-amber-600 hover:text-amber-700 font-medium"
                   >

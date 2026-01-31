@@ -62,19 +62,37 @@ export default function ServiceBooking() {
   const onSubmit = async (data: BookingFormData) => {
     setIsSubmitting(true)
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    // Here you would send the booking to your backend
-    console.log("Booking submitted:", data)
-    
-    toast.success("Booking Confirmed!", {
-      description: `We'll contact you shortly to confirm your appointment on ${format(data.date, "PPP")} at ${data.time}`
-    })
-    
-    reset()
-    setSelectedDate(undefined)
-    setIsSubmitting(false)
+    try {
+      const response = await fetch('/api/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...data,
+          date: format(data.date, "PPP")
+        })
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        toast.success("Booking Confirmed!", {
+          description: `We'll contact you shortly to confirm your appointment on ${format(data.date, "PPP")} at ${data.time}`
+        })
+        reset()
+        setSelectedDate(undefined)
+      } else {
+        toast.error("Booking Failed", {
+          description: "Please call us directly at +91 94538 16645"
+        })
+      }
+    } catch (error) {
+      console.error('Booking error:', error)
+      toast.error("Connection Error", {
+        description: "Please call us directly at +91 94538 16645"
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleDateSelect = (date: Date | undefined) => {
