@@ -16,7 +16,7 @@ const bookingSchema = z.object({
   phone: z.string().regex(/^[6-9]\d{9}$/, "Enter a valid 10-digit phone number"),
   email: z.string().email("Enter a valid email address").optional().or(z.literal("")),
   service: z.string().min(1, "Please select a service"),
-  date: z.date({ required_error: "Please select a date" }),
+  date: z.date({ message: "Please select a date" }),
   time: z.string().min(1, "Please select a time slot"),
   address: z.string().min(10, "Please provide detailed address"),
   message: z.string().optional()
