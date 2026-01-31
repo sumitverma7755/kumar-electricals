@@ -2,8 +2,6 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { google } from 'googleapis';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 async function addToGoogleSheets(data: any) {
   try {
     if (!process.env.GOOGLE_SHEETS_CREDENTIALS || !process.env.GOOGLE_SHEET_ID) {
@@ -43,6 +41,7 @@ export async function POST(request: Request) {
 
     // Send email notification
     if (process.env.RESEND_API_KEY && process.env.NOTIFICATION_EMAIL) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
       await resend.emails.send({
         from: 'Kumar Electricals <contact@kumarelectricals.com>',
         to: process.env.NOTIFICATION_EMAIL,

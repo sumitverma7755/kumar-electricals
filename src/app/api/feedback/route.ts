@@ -2,8 +2,6 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { google } from 'googleapis';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 async function addToGoogleSheets(data: any) {
   try {
     if (!process.env.GOOGLE_SHEETS_CREDENTIALS || !process.env.GOOGLE_SHEET_ID) {
